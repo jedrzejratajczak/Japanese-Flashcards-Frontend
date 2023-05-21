@@ -4,6 +4,7 @@ import Container from './pages/Container';
 import Login from './pages/Login';
 import Home from './pages/Home';
 import Flashcards from './pages/Flashcards';
+import Quiz from './pages/Quiz';
 import { useState } from 'react';
 
 const App = () => {
@@ -28,6 +29,7 @@ const App = () => {
           path="flashcards/:level"
           element={<Flashcards apiUrl={apiUrl} />}
         />
+        <Route path="quiz/:id" element={<Quiz apiUrl={apiUrl} />} />
       </Route>
     </Routes>
   );

@@ -10,6 +10,9 @@ export const handlers = [
   rest.post('/register', (req, res, ctx) => {
     console.log(req.body);
     return res();
+  }),
+  rest.get('/quiz/:id', (req, res, ctx) => {
+    return res(ctx.json(quiz));
   })
 ];
 
@@ -20,6 +23,21 @@ const cards = [
     hiragana: 'しょうじき'
   },
   {
+    words: 'equality, impartiality, evenness',
+    kanji: '平等',
+    hiragana: 'びょうどう'
+  }
+];
+
+const quiz = [
+  {
+    id: 1,
+    words: 'honest, frank, candid, straightforward',
+    kanji: '正直',
+    hiragana: 'しょうじき'
+  },
+  {
+    id: 2,
     words: 'equality, impartiality, evenness',
     kanji: '平等',
     hiragana: 'びょうどう'
