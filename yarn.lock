@@ -434,6 +434,11 @@
   resolved "https://registry.yarnpkg.com/@open-draft/until/-/until-1.0.3.tgz#db9cc719191a62e7d9200f6e7bab21c5b848adca"
   integrity sha512-Aq58f5HiWdyDlFffbbSjAlv596h/cOnt2DO1w3DOC7OJ5EHs0hd/nycJfiu9RJbT6Yk6F1knnRRXNSpxoIVZ9Q==
 
+"@react-oauth/google@^0.11.0":
+  version "0.11.0"
+  resolved "https://registry.yarnpkg.com/@react-oauth/google/-/google-0.11.0.tgz#9d3814e54fbfc0452525397238ad2372a9aaaef9"
+  integrity sha512-yeypwdQCcFIAo43OqVOLBfUXuxmxt3xiybfP9h3smtBW4UeFXFVQDsq+d+GlbZFo0TpONPR2+KCk/KT1/pQnvQ==
+
 "@remix-run/router@1.5.0":
   version "1.5.0"
   resolved "https://registry.yarnpkg.com/@remix-run/router/-/router-1.5.0.tgz#57618e57942a5f0131374a9fdb0167e25a117fdc"
@@ -1261,6 +1266,11 @@ json5@^2.2.2:
   version "2.2.3"
   resolved "https://registry.yarnpkg.com/json5/-/json5-2.2.3.tgz#78cd6f1a19bdc12b73db5ad0c61efd66c1e29283"
   integrity sha512-XmOWe7eyHYH14cLdVPoyg+GOH3rYX++KpzrylJwSW98t3Nk+U8XOl8FWKOgwtzdb8lXGf6zYwDUzeHMWfxasyg==
+
+jwt-decode@^3.1.2:
+  version "3.1.2"
+  resolved "https://registry.yarnpkg.com/jwt-decode/-/jwt-decode-3.1.2.tgz#3fb319f3675a2df0c2895c8f5e9fa4b67b04ed59"
+  integrity sha512-UfpWE/VZn0iP50d8cz9NrZLM9lSWhcJ+0Gt/nm4by88UL+J1SiKN8/5dkjMmbEzwL2CAe+67GsegCbIKtbp75A==
 
 lilconfig@^2.0.5, lilconfig@^2.0.6:
   version "2.1.0"

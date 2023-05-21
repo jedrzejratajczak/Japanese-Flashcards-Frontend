@@ -5,7 +5,7 @@ import { ThreeDots } from 'react-loader-spinner';
 import axios from 'axios';
 import ArrowBack from '../assets/arrow-back.svg';
 
-const Flashcards = () => {
+const Flashcards = ({ apiUrl }) => {
   const { level } = useParams();
   const flipRef = useRef();
   const [flashcard, setFlashcard] = useState(null);
@@ -20,7 +20,7 @@ const Flashcards = () => {
   const getFlashcard = async (shouldFlip = false) => {
     if (shouldFlip) flipFlashcard();
 
-    const { data } = await axios.get(`/flashcards/${level}`, {
+    const { data } = await axios.get(`${apiUrl}/flashcards/${level}`, {
       headers: {
         'Content-Type': 'application/json'
       }

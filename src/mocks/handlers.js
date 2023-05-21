@@ -6,6 +6,10 @@ export const handlers = [
   rest.get('/flashcards/:level', (req, res, ctx) => {
     index = index === cards.length - 1 ? 0 : index + 1;
     return res(ctx.json(cards[index]));
+  }),
+  rest.post('/register', (req, res, ctx) => {
+    console.log(req.body);
+    return res();
   })
 ];
 

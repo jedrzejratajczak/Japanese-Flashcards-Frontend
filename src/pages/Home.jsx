@@ -1,11 +1,12 @@
-import ChevronRight from '../assets/chevron-right.svg';
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+
+import ChevronRight from '../assets/chevron-right.svg';
 import {
   kanjiBackgrounds,
   kanjiColors,
   kanjiIcons
 } from '../assets/kanjiIcons';
-import { useEffect } from 'react';
 
 const Home = () => {
   const username = 'Andy';
