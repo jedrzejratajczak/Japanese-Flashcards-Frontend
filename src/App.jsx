@@ -4,7 +4,7 @@ import Container from './pages/Container';
 import Login from './pages/Login';
 import Home from './pages/Home';
 import Flashcards from './pages/Flashcards';
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 
 const App = () => {
   const [apiUrl, setApiUrl] = useState('');

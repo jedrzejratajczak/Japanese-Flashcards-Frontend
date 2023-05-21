@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter } from 'react-router-dom';
+import { HashRouter as Router } from 'react-router-dom';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 
 import App from './App';
@@ -13,10 +13,10 @@ if (import.meta.env.VITE_ENABLE_MOCK_SERVER === 'true') {
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <BrowserRouter>
+    <Router>
       <GoogleOAuthProvider clientId="666933004936-318dhs7mk7snod6p7g3nadm291ui09v1.apps.googleusercontent.com">
         <App />
       </GoogleOAuthProvider>
-    </BrowserRouter>
+    </Router>
   </React.StrictMode>
 );
