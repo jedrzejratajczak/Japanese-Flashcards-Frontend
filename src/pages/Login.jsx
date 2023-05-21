@@ -17,6 +17,7 @@ const Login = ({ apiUrl }) => {
       level: levelRef.current.value
     };
 
+    console.log('post', `${apiUrl}/register`, data);
     axios.post(`${apiUrl}/register`, data);
   };
 
