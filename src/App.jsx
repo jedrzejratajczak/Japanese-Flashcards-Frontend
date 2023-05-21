@@ -8,12 +8,22 @@ import { useState } from 'react';
 
 const App = () => {
   const [apiUrl, setApiUrl] = useState('');
+  const [googleData, setGoogleData] = useState(null);
 
   return (
     <Routes>
       <Route path="/" element={<Container setApiUrl={setApiUrl} />}>
-        <Route index element={<Login apiUrl={apiUrl} />} />
-        <Route path="home" element={<Home />} />
+        <Route
+          index
+          element={
+            <Login
+              apiUrl={apiUrl}
+              googleData={googleData}
+              setGoogleData={setGoogleData}
+            />
+          }
+        />
+        <Route path="home" element={<Home name={googleData?.name || ''} />} />
         <Route
           path="flashcards/:level"
           element={<Flashcards apiUrl={apiUrl} />}

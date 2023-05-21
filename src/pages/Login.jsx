@@ -2,31 +2,40 @@ import { useRef, useState } from 'react';
 import axios from 'axios';
 import jwtDecode from 'jwt-decode';
 import { GoogleLogin } from '@react-oauth/google';
+import { Navigate } from 'react-router-dom';
 
-const Login = ({ apiUrl }) => {
-  const [googleData, setGoogleData] = useState(null);
-  const emailRef = useRef();
+const Login = ({ apiUrl, googleData, setGoogleData }) => {
+  const [redirect, setRedirect] = useState(false);
   const phoneRef = useRef();
   const levelRef = useRef();
 
-  const register = () => {
+  const register = async () => {
     const data = {
       id: googleData.clientId,
-      email: emailRef.current.value,
+      email: googleData.email,
       phone: phoneRef.current.value,
       level: levelRef.current.value
     };
 
     console.log('post', `${apiUrl}/register`, data);
-    axios.post(`${apiUrl}/register`, data);
+    await axios.post(`${apiUrl}/register`, data);
+
+    setRedirect(true);
   };
 
   const decodeGoogleData = (data) => {
     const credential = jwtDecode(data.credential);
-    setGoogleData({ clientId: data.clientId, email: credential.email });
+    console.log(credential);
+    setGoogleData({
+      clientId: data.clientId,
+      email: credential.email,
+      name: credential.given_name
+    });
   };
 
-  return (
+  return redirect ? (
+    <Navigate to="/home" />
+  ) : (
     <div className="h-screen flex flex-col gap-6 items-center justify-center">
       {googleData ? (
         <>
@@ -35,7 +44,6 @@ const Login = ({ apiUrl }) => {
               E-mail address*
             </label>
             <input
-              ref={emailRef}
               className="border-2 rounded border-white px-2 py-1 text-gray-700"
               type="email"
               name="email"
@@ -74,12 +82,20 @@ const Login = ({ apiUrl }) => {
               <option value="5">JLPT-N5</option>
             </select>
           </div>
-          <button
-            className="bg-white rounded px-6 py-2 hover:bg-slate-50 transition-colors"
-            onClick={register}
-          >
-            Register
-          </button>
+          <div className="flex gap-2">
+            <button
+              className="bg-white rounded px-6 py-2 hover:bg-slate-50 transition-colors"
+              onClick={register}
+            >
+              Register
+            </button>
+            <button
+              className="bg-white rounded px-6 py-2 hover:bg-slate-50 transition-colors"
+              onClick={() => setRedirect(true)}
+            >
+              Learn
+            </button>
+          </div>
         </>
       ) : (
         <GoogleLogin
