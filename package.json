@@ -1,5 +1,6 @@
 {
   "name": "japanese-flashcards-frontend",
+  "homepage": "/Japanese-Flashcards-Frontend",
   "private": true,
   "version": "0.0.0",
   "type": "module",
