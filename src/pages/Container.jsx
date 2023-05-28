@@ -5,7 +5,7 @@ import Background from '../assets/background-flag.webp';
 import BackgroundMusic from '../assets/background-music.mp3';
 import MusicIcon from '../assets/music-icon.png';
 
-const Container = ({ setApiUrl }) => {
+const Container = () => {
   const audio = new Audio(BackgroundMusic);
   const [playing, setPlaying] = useState(false);
 
@@ -32,14 +32,6 @@ const Container = ({ setApiUrl }) => {
       >
         <img src={MusicIcon} />
       </button>
-      <div className="fixed bottom-2 right-2">
-        <input
-          className="rounded border-2 border-white px-2 py-1"
-          type="text"
-          placeholder="API URL"
-          onChange={(evt) => setApiUrl(evt.target.value)}
-        />
-      </div>
     </>
   );
 };

@@ -4,21 +4,21 @@ import jwtDecode from 'jwt-decode';
 import { GoogleLogin } from '@react-oauth/google';
 import { Navigate } from 'react-router-dom';
 
-const Login = ({ apiUrl, googleData, setGoogleData }) => {
+const Login = ({ googleData, setGoogleData }) => {
   const [redirect, setRedirect] = useState(false);
   const phoneRef = useRef();
   const levelRef = useRef();
 
   const register = async () => {
     const data = {
-      id: googleData.clientId,
-      email: googleData.email,
-      phone: phoneRef.current.value,
+      token: googleData.clientId,
+      user_email: googleData.email,
+      user_phone: phoneRef.current.value,
       level: levelRef.current.value
     };
 
-    console.log('post', `${apiUrl}/register`, data);
-    await axios.post(`${apiUrl}/register`, data);
+    const res = await axios.post(import.meta.env.VITE_ADD_USER_ENDPOINT, data);
+    console.log(res);
 
     setRedirect(true);
   };

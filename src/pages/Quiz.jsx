@@ -2,18 +2,21 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-const Quiz = ({ apiUrl }) => {
+const Quiz = () => {
   const { id } = useParams();
   const [quiz, setQuiz] = useState([]);
   const [answers, setAnswers] = useState({});
   const [checkingAnswers, setCheckingAnswers] = useState(false);
 
   const getQuiz = async () => {
-    const { data } = await axios.get(`${apiUrl}/quiz/${id}`, {
-      headers: {
-        'Content-Type': 'application/json'
+    const { data } = await axios.get(
+      `${import.meta.env.VITE_GET_QUIZ_ENDPOINT}/${id}`,
+      {
+        headers: {
+          'Content-Type': 'application/json'
+        }
       }
-    });
+    );
 
     setQuiz(data);
   };
@@ -55,7 +58,7 @@ const Quiz = ({ apiUrl }) => {
           {checkingAnswers && (
             <p className="text-center text-green-700 text-sm flex justify-between">
               {words.split(', ').map((word) => (
-                <span>{word}</span>
+                <span key={word}>{word}</span>
               ))}
             </p>
           )}

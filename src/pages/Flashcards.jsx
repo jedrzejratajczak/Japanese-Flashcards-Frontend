@@ -5,7 +5,7 @@ import { ThreeDots } from 'react-loader-spinner';
 import axios from 'axios';
 import ArrowBack from '../assets/arrow-back.svg';
 
-const Flashcards = ({ apiUrl }) => {
+const Flashcards = () => {
   const { level } = useParams();
   const flipRef = useRef();
   const [flashcard, setFlashcard] = useState(null);
