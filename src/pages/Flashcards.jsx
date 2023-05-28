@@ -20,11 +20,10 @@ const Flashcards = () => {
   const getFlashcard = async (shouldFlip = false) => {
     if (shouldFlip) flipFlashcard();
 
-    const { data } = await axios.get(`${apiUrl}/flashcards/${level}`, {
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    });
+    const { data } = await axios.get(
+      `${import.meta.env.VITE_GET_FLASHCARD_ENDPOINT}/${level}`,
+      { headers: { 'Content-Type': 'application/json' } }
+    );
 
     setFlashcard(data);
   };
@@ -59,7 +58,7 @@ const Flashcards = () => {
           <FlashcardContainer
             flipFlashcard={flipFlashcard}
             loading={loading}
-            words={flashcard?.words}
+            word={flashcard?.word}
           />
         }
         backHTML={
@@ -88,7 +87,7 @@ const FlashcardContainer = ({
   flipFlashcard,
   flipped = false,
   loading,
-  words,
+  word,
   kanji,
   hiragana
 }) => (
@@ -104,8 +103,8 @@ const FlashcardContainer = ({
         color="rgb(239, 68, 68)"
         visible={true}
       />
-    ) : words ? (
-      <p className="text-4xl text-center font-semibold">{words}</p>
+    ) : word ? (
+      <p className="text-4xl text-center font-semibold">{word}</p>
     ) : flipped ? (
       <p className="flex font-semibold flex-col items-center gap-6">
         <span className="text-6xl">{kanji}</span>
