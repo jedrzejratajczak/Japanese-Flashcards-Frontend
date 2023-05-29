@@ -18,7 +18,15 @@ const Quiz = () => {
       }
     );
 
-    setQuiz(data);
+    setQuiz(
+      JSON.parse(
+        data.quiz_content
+          .replaceAll('\\\\', '§')
+          .replaceAll('\\', '')
+          .replaceAll('§', '\\')
+          .slice(1, -1)
+      )
+    );
   };
 
   useEffect(() => {
@@ -28,7 +36,7 @@ const Quiz = () => {
   return (
     <div className="h-screen flex flex-col gap-6 items-center justify-center">
       <h1 className="text-5xl text-red-700 mb-2 font-semibold">QUIZ</h1>
-      {quiz.map(({ id, kanji, hiragana, words }) => (
+      {quiz.map(({ id, kanji, hiragana, word }) => (
         <div key={id}>
           <div className="flex gap-5 items-center">
             <label
@@ -45,7 +53,7 @@ const Quiz = () => {
               disabled={checkingAnswers}
               className={`border-2 rounded px-2 py-1 text-gray-700 ${
                 checkingAnswers
-                  ? words.split(', ').includes(answers[id])
+                  ? word.split(', ').includes(answers[id])
                     ? 'border-green-500'
                     : 'border-red-500'
                   : 'border-white'
@@ -57,7 +65,7 @@ const Quiz = () => {
           </div>
           {checkingAnswers && (
             <p className="text-center text-green-700 text-sm flex justify-between">
-              {words.split(', ').map((word) => (
+              {word.split(', ').map((word) => (
                 <span key={word}>{word}</span>
               ))}
             </p>
